@@ -1,0 +1,119 @@
+﻿@model IEnumerable<projet1.ModelBD.produit>
+@{
+    ViewBag.Title = "Mesproduits";
+    Layout = "~/Views/Shared/_PropLayout.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark"> Mes Produits</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">
+                        @Html.ActionLink("Tableau de board", "Index", "Home")
+                    </li>
+                    <li class="breadcrumb-item active">Mes Produits</li>
+                </ol>
+            </div> <!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<!--Main-Content-->
+<section class="content">
+    <div class="ajoutclasser">
+        <a class="btn btn-app" href='@Url.Action("NouveauProduit","MesProduit")'>
+            <i class="fas fa-cart-arrow-down"></i> Nouveau Produit
+        </a>
+
+    </div>
+    <!-- Default box -->
+   
+<div class="card card-solid">
+    <div class="card-body pb-0">
+       
+        <div class="row d-flex align-items-stretch">
+            @foreach (var item in Model)
+            {
+                <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+
+                    <div class="card bg-light">
+                        <div class="card-body pt-0">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="lead"><b></b></h2>
+
+                                    <p class="text-muted text-sm">
+                                        <b>Description: </b>
+
+                                        @item.description
+                                    </p>
+                                    <ul class="ml-4 mb-0 fa-ul text-muted">
+                                        <li class="small">
+                                            <span class="fa-li"><i class="fas fa-money-bill-wave"></i></span>
+                                            Le prix:
+
+                                            @item.prix
+                                        </li>
+                                        <li class="small">
+                                            <span class="fa-li"><i class="far fa-clock"></i></span>
+                                            Ajouté le :@item.dateAjout
+                
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-5 text-center">
+                                    <img src="@Url.Content(item.ImagePath)" alt="" id="image" class="img-circle img-fluid" >
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-right">
+                                <a class="btn btn-danger btn-sm" href="#">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </a>
+
+                                <a class="btn btn-info btn-sm" href="~/EditMovie?id=@item.ref_Id">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    Edit
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+            </div>
+        </div> 
+        
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <nav aria-label="Contacts Page Navigation">
+            <ul class="pagination justify-content-center m-0">
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">6</a></li>
+                <li class="page-item"><a class="page-link" href="#">7</a></li>
+                <li class="page-item"><a class="page-link" href="#">8</a></li>
+            </ul>
+        </nav>
+
+    </div>
+    <!-- /.card-footer -->
+</div>
+            <!-- /.card -->
+
+    </section>
+
+
+
